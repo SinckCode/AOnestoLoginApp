@@ -100,8 +100,8 @@ class MainActivity : ComponentActivity() {
 
                         composable<RegisterScreenRoute>{
                             RegisterScreen(
-                                navController : NavController,
-                                innerPadding : PaddingValues
+                                navController = navController,
+                                innerPadding = innerPadding
                             )
                         }
 
