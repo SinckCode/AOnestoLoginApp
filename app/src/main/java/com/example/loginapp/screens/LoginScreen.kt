@@ -11,16 +11,20 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
@@ -85,61 +89,118 @@ fun LoginScreen(
             Text(
                 text = "Login",
                 style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
-                color = Color.Black
+                color = Color.Black,
+                modifier = Modifier
+                    .padding(top = 30.dp)
             )
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Text(text = "Email", color = Color.Gray)
-            Spacer(modifier = Modifier.height(4.dp))
-            OutlinedTextField(
-                value = email,
-                onValueChange = { email = it },
-                placeholder = { Text("email@example.com") },
-                modifier = Modifier
+            Column(modifier = Modifier
+                .weight(8f)
+                .padding(top = 30.dp)) {
+
+                Column(modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(14.dp)),
-                singleLine = true
-            )
+                    .shadow(
+                        elevation = 8.dp,
+                        shape = RoundedCornerShape(22.dp),
+                        clip = false
+                    )
+                    .background(Color.White, shape = RoundedCornerShape(22.dp))
+                    .padding(horizontal = 20.dp, vertical = 10.dp)) {
+                    // ===== EMAIL =====
+                    Text(
+                        text = "Email",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
 
-            Spacer(modifier = Modifier.height(16.dp))
+                    TextField(
+                        value = email,
+                        onValueChange = { email = it },
+                        placeholder = { Text("email@example.com", color = Color(0xFFB9B9B9)) },
+                        singleLine = true,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(18.dp)),
+                        colors = TextFieldDefaults.colors(
+                            unfocusedContainerColor = Color.Transparent,
+                            focusedContainerColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            focusedIndicatorColor = Color.Transparent,
+                            focusedTextColor = Color.Black,
+                            unfocusedTextColor = Color.Black,
+                            cursorColor = Color.Black
+                        )
+                    )
+                }
 
-            Text(text = "Password", color = Color.Gray)
-            Spacer(modifier = Modifier.height(4.dp))
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                placeholder = { Text("••••••") },
-                modifier = Modifier
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Column(modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(14.dp)),
-                singleLine = true,
-                visualTransformation = PasswordVisualTransformation()
-            )
+                    .shadow(
+                        elevation = 8.dp,
+                        shape = RoundedCornerShape(22.dp),
+                        clip = false
+                    )
+                    .background(Color.White, shape = RoundedCornerShape(22.dp))
+                    .padding(horizontal = 20.dp, vertical = 28.dp)) {
+                    // ===== PASSWORD =====
+                    Text(
+                        text = "Password",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black
+                    )
+                    Spacer(modifier = Modifier.height(6.dp))
 
-            Spacer(modifier = Modifier.height(32.dp))
+                    TextField(
+                        value = password,
+                        onValueChange = { password = it },
+                        placeholder = { Text("••••••••", color = Color(0xFFB9B9B9)) },
+                        singleLine = true,
+                        visualTransformation = PasswordVisualTransformation(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(18.dp)),
+                        colors = TextFieldDefaults.colors(
+                            unfocusedContainerColor = Color.Transparent,
+                            focusedContainerColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            focusedIndicatorColor = Color.Transparent,
+                            focusedTextColor = Color.Black,
+                            unfocusedTextColor = Color.Black,
+                            cursorColor = Color.Black
+                        )
+                    )
+                }
 
-            Button(
-                onClick = { /*navController.navigate("home")*/ },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(52.dp)
-                    .clip(RoundedCornerShape(14.dp)),
-                colors = ButtonDefaults.buttonColors(containerColor = Color.Black)
-            ) {
-                Text("Login", color = Color.White)
+
+
+
+
             }
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Column(modifier = Modifier
+                .weight(1f)) {
 
-            Text(
-                text = "Don’t have any account? Sign Up",
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { navController.navigate(RegisterScreenRoute) },
-                textAlign = TextAlign.Center,
-                color = Color.Gray
-            )
+                Text(
+                    text = "Don’t have any account? Sign Up",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { navController.navigate(RegisterScreenRoute) },
+                    textAlign = TextAlign.Center,
+                    color = Color.Gray
+                )
+
+            }
+
+
+
         }
     }
 }
