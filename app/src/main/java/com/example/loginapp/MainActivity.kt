@@ -43,9 +43,7 @@ class MainActivity : ComponentActivity() {
                                 onClick = {navController.navigate(LoginScreenRoute){
                                     launchSingleTop = true
                                     //Grafo Splash Screen
-                                    popUpTo(navController.graph.startDestinationId){
-                                        saveState = true
-                                    }
+
                                     restoreState = true
                                 }},
                                 icon = {
@@ -66,9 +64,7 @@ class MainActivity : ComponentActivity() {
                                 onClick = {navController.navigate(RegisterScreenRoute){
                                     launchSingleTop = true
                                     //Grafo Splash Screen
-                                    popUpTo(navController.graph.startDestinationId){
-                                        saveState = true
-                                    }
+
                                     restoreState = true
                                 }},
                                 icon = {
