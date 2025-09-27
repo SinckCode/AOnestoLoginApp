@@ -103,29 +103,41 @@ fun LoginScreen(
                 Column(modifier = Modifier
                     .fillMaxWidth()
                     .shadow(
-                        elevation = 8.dp,
-                        shape = RoundedCornerShape(22.dp),
+                        elevation = 3.dp,
+                        shape = RoundedCornerShape(18.dp),
                         clip = false
                     )
-                    .background(Color.White, shape = RoundedCornerShape(22.dp))
-                    .padding(horizontal = 20.dp, vertical = 10.dp)) {
+                    .background(Color.White, shape = RoundedCornerShape(18.dp))
+                    .padding(horizontal = 20.dp, vertical = 5.dp)) {
                     // ===== EMAIL =====
                     Text(
                         text = "Email",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.SemiBold,
                         color = Color.Black
                     )
                     Spacer(modifier = Modifier.height(6.dp))
 
                     TextField(
                         value = email,
+
                         onValueChange = { email = it },
-                        placeholder = { Text("email@example.com", color = Color(0xFFB9B9B9)) },
+                        placeholder = {
+                            Text(
+                                "email@example.com",
+                                color = Color(0xFFB9B9B9),
+                                textAlign = TextAlign.Start,
+                                modifier = Modifier
+                                    .padding(start = 0.dp)
+                            )
+                        },
                         singleLine = true,
                         modifier = Modifier
                             .fillMaxWidth()
                             .clip(RoundedCornerShape(18.dp)),
+                        textStyle = androidx.compose.ui.text.TextStyle(
+                            textAlign = TextAlign.Start
+                        ),
                         colors = TextFieldDefaults.colors(
                             unfocusedContainerColor = Color.Transparent,
                             focusedContainerColor = Color.Transparent,
@@ -136,6 +148,7 @@ fun LoginScreen(
                             cursorColor = Color.Black
                         )
                     )
+
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -143,17 +156,17 @@ fun LoginScreen(
                 Column(modifier = Modifier
                     .fillMaxWidth()
                     .shadow(
-                        elevation = 8.dp,
-                        shape = RoundedCornerShape(22.dp),
+                        elevation = 3.dp,
+                        shape = RoundedCornerShape(18.dp),
                         clip = false
                     )
-                    .background(Color.White, shape = RoundedCornerShape(22.dp))
-                    .padding(horizontal = 20.dp, vertical = 28.dp)) {
+                    .background(Color.White, shape = RoundedCornerShape(18.dp))
+                    .padding(horizontal = 20.dp, vertical = 5.dp)) {
                     // ===== PASSWORD =====
                     Text(
                         text = "Password",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.SemiBold,
                         color = Color.Black
                     )
                     Spacer(modifier = Modifier.height(6.dp))
@@ -177,6 +190,22 @@ fun LoginScreen(
                             cursorColor = Color.Black
                         )
                     )
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Column {
+                    // ===== BOTÓN NEGRO =====
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(60.dp)
+                            .clip(RoundedCornerShape(10.dp))
+                            .background(Color.Black)
+                            .clickable {  },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text("Login", color = Color.White, style = MaterialTheme.typography.bodyLarge)
+                    }
                 }
 
 
