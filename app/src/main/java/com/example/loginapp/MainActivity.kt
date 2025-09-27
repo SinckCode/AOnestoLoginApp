@@ -35,52 +35,8 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 Scaffold(
                     modifier = Modifier
-                        .fillMaxSize(),
-                    bottomBar = {
-                        NavigationBar {
-                            NavigationBarItem(
-                                selected = false,
-                                onClick = {navController.navigate(LoginScreenRoute){
-                                    launchSingleTop = true
-                                    //Grafo Splash Screen
+                        .fillMaxSize()
 
-                                    restoreState = true
-                                }},
-                                icon = {
-                                    Icon(
-                                        imageVector = Icons.Default.Menu,
-                                        contentDescription = "home"
-                                    )
-                                },
-                                label = {
-                                    Text(
-                                        text = "Login"
-                                    )
-                                }
-                            )
-
-                            NavigationBarItem(
-                                selected = false,
-                                onClick = {navController.navigate(RegisterScreenRoute){
-                                    launchSingleTop = true
-                                    //Grafo Splash Screen
-
-                                    restoreState = true
-                                }},
-                                icon = {
-                                    Icon(
-                                        imageVector = Icons.Default.Favorite,
-                                        contentDescription = "favorites"
-                                    )
-                                },
-                                label = {
-                                    Text(
-                                        text = "Register"
-                                    )
-                                }
-                            )
-                        }
-                    }
                 ) { innerPadding ->
                     NavHost(
                         navController = navController,
